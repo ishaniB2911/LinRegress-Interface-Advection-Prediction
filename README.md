@@ -17,10 +17,15 @@ where:
 ## Project Structure
 ```
 .
-├── data_generator.py    # Generates synthetic advection data
-├── model.py             # Linear regression model and trainer
-├── main.py              # Main execution script
-└── README.md            # This file
+├──data
+├────data_generator.py      # Generates synthetic advection data
+├──model
+├────linear_model.py        # Linear regression model and trainer
+├──results
+├────predictions.png
+├────training_history.png   # Visulisation files
+├── main.py                 # Main execution script
+└── README.md               # This file
 ```
 
 ## Files Description
@@ -32,7 +37,7 @@ where:
 - Supports adding Gaussian noise for realism
 - Output: Feature matrix `[x₀, u, t]` and target `x(t)`
 
-### `model.py`
+### `linear_model.py`
 - **Class**: `LinearAdvectionModel` - Linear regression model
   - Architecture: `x(t) = w₁·x₀ + w₂·u + w₃·t + b`
   - Ideally learns: `w₁≈1, w₂≈1, w₃≈1, b≈0` (physical consistency)
@@ -59,7 +64,7 @@ pip install torch numpy matplotlib
 
 Or create a virtual environment:
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install torch numpy matplotlib
 ```
@@ -68,7 +73,7 @@ pip install torch numpy matplotlib
 
 ### Basic Execution
 ```bash
-python main.py
+python3 main.py
 ```
 
 ### Expected Output
